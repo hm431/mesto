@@ -1,0 +1,21 @@
+.Profile__status {
+    margin: 10px 0 0 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+@media screen and (max-width: 760px) {
+    .Profile__status {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        margin: 9px 0 0 -30px;
+
+    }
+}
