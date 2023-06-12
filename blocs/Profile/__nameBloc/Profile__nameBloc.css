@@ -1,11 +1,11 @@
 
-.Profile_text_nameBloc {
+.Profile__nameBloc {
     display: flex;
     margin: 22px 0 0 0;
 }
 
 @media screen and (max-width: 760px) {
-    .Profile_text_nameBloc {
+    .Profile__nameBloc {
         margin: 26px 0 0 0;
     }
 }
