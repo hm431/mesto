@@ -1,7 +1,7 @@
 .Profile__editButton {
     width: 24px;
     height: 24px;
-    margin: 15px 0 0 18px;
+    margin: 15px 0 0 24px;
     background-image: url(/images/Edit\ Button.svg);
     background-color: #FFFFFF00;
     border: 0;
@@ -12,6 +12,7 @@
         width: 18px;
         height: 18px;
         margin: 8px 0 0 10px;
+        background-size: 100%;
     }
 
 }

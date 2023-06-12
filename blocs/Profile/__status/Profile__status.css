@@ -1,5 +1,5 @@
 .Profile__status {
-    margin: 10px 0 0 0;
+    margin: 8px 0 0 0;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -15,7 +15,7 @@
         font-size: 14px;
         line-height: 17px;
         text-align: center;
-        margin: 9px 0 0 -30px;
+        margin: 7px 0 0 -30px;
 
     }
 }
