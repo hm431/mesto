@@ -8,28 +8,37 @@
     <title>Mesto</title>
 </head>
 
+
+<section class="popup">
+    <div class="popup__container">
+        <img src="/images/Close Icon.svg" alt="Закрыть окно" class="popup__close">
+        <h2 class="popup__header">Редактировать профиль</h2>
+        <input type="text" placeholder="" class="popup__input popup_input_name">
+        <input type="text" placeholder="" class="popup__input popup_input_status">
+        <div class="popup__save">Сохранить</div>
+    </div>
+</section>
+
+
 <body class="page">
     <header class="header">
-        <img src="./images/Logo.png" alt="Логотип Сайта" class="header__logo">
+        <img src="./images/Logo.svg" alt="Логотип Сайта" class="header__logo">
     </header>
 
 
 
 
     <main class="main">
-
-
-
-        <section class="Profile">
-            <img src="./images/Avatar.jpg" alt="Аватар" class="Profile__avatar">
-            <div class="Profile__info">
-                <div class="Profile__nameBloc">
-                    <h2 class="Profile__name">Жак-Ив Кусто</h2>
-                    <button class="Profile__editButton"></button>
+        <section class="profile">
+            <img src="./images/Avatar.jpg" alt="Аватар" class="profile__avatar">
+            <div class="profile__info">
+                <div class="profile__name-bloc">
+                    <h2 class="profile__name">Жак-Ив Кусто</h2>
+                    <button class="profile__edit-button"></button>
                 </div>
-                <h3 class="Profile__status">Исследователь океана</h3>
+                <h3 class="profile__status">Исследователь океана</h3>
             </div>
-            <img src="./images/Add_Button.png" alt="Добавить карточку" class="Profile__addButton">
+           <button  class="profile__add-button"></button>
 
         </section>
 
@@ -82,12 +91,12 @@
     </main>
 
     <footer class="footer">
-        <div class="footer__copiright">
+        <p class="footer__copiright">
             © 2020 Mesto Russia
-        </div>
+        </p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="./scripts/script.js"></script>
 </body>
 
 </html>

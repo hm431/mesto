@@ -1,4 +1,4 @@
-.Profile__status {
+.profile__status {
     margin: 8px 0 0 0;
     font-family: 'Inter';
     font-style: normal;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 760px) {
-    .Profile__status {
+    .profile__status {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 400;

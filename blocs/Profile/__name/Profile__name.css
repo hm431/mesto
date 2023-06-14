@@ -1,4 +1,4 @@
-.Profile__name {
+.profile__name {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (max-width: 760px) {
-    .Profile__name {
+    .profile__name {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
