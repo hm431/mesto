@@ -1,8 +1,8 @@
 .elements {
     margin: 51px 0 0 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
     column-gap: 17px;
+    grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
     row-gap: 20px;
 }
 

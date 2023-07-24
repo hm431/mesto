@@ -1,12 +1,15 @@
 
 
 .popup__save {
+    border: 0;
+    cursor: pointer;
+    width: 358px;
     margin: 48px 0 0 0;
     background: #000000;
     border-radius: 2px;
     padding: 14px 0 14px 0;
     text-align: center;
-    font-family: 'Inter';
+    font-family: 'Inter' ,Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -17,6 +20,7 @@
 @media screen and (max-width: 1040px) {
     .popup__save {
         font-size: 14px;
+        width: 238px;
         line-height: 17px;
         margin: 45px 0 14px 0;
     }

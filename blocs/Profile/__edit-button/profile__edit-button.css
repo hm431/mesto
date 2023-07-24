@@ -2,9 +2,10 @@
     width: 24px;
     height: 24px;
     margin: 15px 0 0 18px;
-    background-image: url(/images/Edit\ Button.svg);
+    background-image: url(../../../images/Edit_Button.svg);
     background-color: #FFFFFF00;
     border: 0;
+    cursor: pointer;
     
 }
 
