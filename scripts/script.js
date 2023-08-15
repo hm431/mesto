@@ -1,5 +1,5 @@
 let popup = document.querySelector('.popup');
-let WindowElement = document.querySelector('.popup__container');
+let windowElement = document.querySelector('.popup__container');
 let editButton = document.querySelector('.profile__edit-button');
 let formClose = document.querySelector('.popup__close');
 let nameInput = document.querySelector('.popup__input_name');
@@ -7,16 +7,15 @@ let jobInput = document.querySelector('.popup__input_status');
 let startName = document.querySelector('.profile__name');
 let startStatus = document.querySelector('.profile__status');
 
-// Переводим данные о профиле со страницы в попап
 
-document.querySelector('.popup__input_name').value = startName.textContent;
-document.querySelector('.popup__input_status').value = startStatus.textContent;
+
 
 //Функция, которая 
 function handleFormSubmit (evt) {
     evt.preventDefault(); 
     startName.textContent = nameInput.value;
-    startStatus.textContent = jobInput.value;   
+    startStatus.textContent = jobInput.value;  
+    closeForm(); 
 }
 
 
@@ -33,7 +32,7 @@ function closeForm() {
 
 editButton.addEventListener('click', oupenForm);
 formClose.addEventListener('click', closeForm);
-WindowElement.addEventListener('submit', handleFormSubmit);
+formPopup.addEventListener('submit', handleFormSubmit);
 
 
 
