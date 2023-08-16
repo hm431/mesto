@@ -2,8 +2,8 @@ let popup = document.querySelector('.popup');
 let windowElement = document.querySelector('.popup__container');
 let editButton = document.querySelector('.profile__edit-button');
 let formClose = document.querySelector('.popup__close');
-let nameInput = document.querySelector('.popup__input_name');
-let jobInput = document.querySelector('.popup__input_status');
+let nameInput = document.querySelector('.popup__input_name_text');
+let jobInput = document.querySelector('.popup__input_status_text');
 let startName = document.querySelector('.profile__name');
 let startStatus = document.querySelector('.profile__status');
 
@@ -32,6 +32,7 @@ function closeForm() {
 
 editButton.addEventListener('click', oupenForm);
 formClose.addEventListener('click', closeForm);
+
 formPopup.addEventListener('submit', handleFormSubmit);
 
 
