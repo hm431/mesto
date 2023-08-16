@@ -6,7 +6,7 @@ let nameInput = document.querySelector('.popup__input_name_text');
 let jobInput = document.querySelector('.popup__input_status_text');
 let startName = document.querySelector('.profile__name');
 let startStatus = document.querySelector('.profile__status');
-
+let popupForm = document.querySelector('.popup__form');
 
 
 
@@ -33,7 +33,7 @@ function closeForm() {
 editButton.addEventListener('click', oupenForm);
 formClose.addEventListener('click', closeForm);
 
-formPopup.addEventListener('submit', handleFormSubmit);
+popupForm.addEventListener('submit', handleFormSubmit);
 
 
 
