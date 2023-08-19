@@ -22,6 +22,10 @@ const initialCards = [
     {
       name: 'Байкал',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    },
+    {
+      name: 'Лайк',
+      link: 'https://i.playground.ru/p/8v7tgGN4GiIjQXbtPw5b9A.jpeg'
     }
   ];
   

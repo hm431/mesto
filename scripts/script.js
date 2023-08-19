@@ -37,7 +37,6 @@ function handleFormProfilSubmit (evt) {
     evt.preventDefault(); 
     profileName.textContent = nameInput.value;
     profileStatusProfession.textContent = jobInput.value;
-
     closePopup(popupProfil); 
 }
 
@@ -53,6 +52,9 @@ buttonOpenPopupAddCard.addEventListener('click', function () {
   renderCard(addElement(nameCardInput.value, ImgCardInput.value));
   
   closePopup(popupPlace);
+
+  nameCardInput.value = "";
+  ImgCardInput.value = "";
 });
 
 
