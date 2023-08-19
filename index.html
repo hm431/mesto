@@ -43,7 +43,7 @@
     <div class="popup popup_profil">
         <div class="popup__container">
             <button  type="button"  class="popup__close popup__close_profil"></button>
-            <form action="#" method="get" name="formPopup" class="popup__form">
+            <form action="#" method="get" name="formPopup" class="popup__form_profil">
                 <h2 class="popup__header">Редактировать профиль</h2>
                 <input type="text" name="popupName" placeholder="Имя" class="popup__input popup__input_name_text">
                 <input type="text" name="popupStatus" placeholder="О себе" class="popup__input popup__input_status_text">
@@ -55,12 +55,21 @@
     <div class="popup popup_place">
         <div class="popup__container">
             <button  type="button"  class="popup__close popup__close_place"></button>
-            <form action="#" method="get" name="formPopup" class="popup__form">
+            <form action="#" method="get" name="formPopup" class="popup__form_place">
                 <h2 class="popup__header">Новое место</h2>
                 <input type="text" name="popupName" placeholder="Название" class="popup__input popup__input_place_text">
                 <input type="text" name="popupStatus" placeholder="Ссылка на картинку" class="popup__input popup__input_place_link">
                 <button type="submit" class="popup__save popup__save_place">Создать</button>
             </form> 
+        </div>
+    </div>
+
+
+    <div class="popup popup_element">
+        <div class="popup__element_container">
+            <button  type="button"  class="popup__close popup__close_element"></button>
+            <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg" alt="Изображение места" class="popup__element_img">
+            <h3 class="popup__element_text">Пока что то </h3>
         </div>
     </div>
 
@@ -72,19 +81,11 @@
                 <h2 class="element__header"></h2>
                 <button  type="button" class="element__like"></button>
             </div>
-            <div class="element__popup">
-                <div class="element__popup_container">
-                    <button  type="button"  class="popup__close element__popup_close"></button>
-                    <img src="#" alt="Изображение места" class="element__popup_img">
-                    <h3 class="element__popup_text"></h3>
-                </div>
-            </div>
         </div>
-
     </template>
 
 
-
+    <script src="./scripts/cards.js"></script>
     <script src="./scripts/script.js"></script>
 </body>
 
