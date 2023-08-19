@@ -2,3 +2,9 @@
     position: relative;
     margin: auto;  
 }
+
+@media screen and (max-width: 1040px) {
+    .element__popup_container {
+        width: 240px;
+    }
+}
