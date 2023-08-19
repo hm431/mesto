@@ -1,5 +1,5 @@
-let popupProfil = document.querySelector('.popup__profil');
-let popupPlace = document.querySelector('.popup__place');
+let popupProfil = document.querySelector('.popup_profil');
+let popupPlace = document.querySelector('.popup_place');
 let windowElement = document.querySelector('.popup__container');
 let editButton = document.querySelector('.profile__edit-button');
 let addButton = document.querySelector('.profile__add-button');
@@ -156,7 +156,8 @@ editButton.addEventListener('click', oupenFormProfil);
 profilFormClose.addEventListener('click', closeAnimationProfil);
 addButton.addEventListener('click', openFormPlace);
 placeFormClose.addEventListener('click', closeAnimationPlace);
-popupForm.addEventListener('submit', handleFormSubmit);
+popupProfil.addEventListener('submit', handleFormSubmit);
+popupPlace.addEventListener('submit', handleFormSubmit);
 
 
 
