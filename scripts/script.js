@@ -77,8 +77,8 @@ function addElement(nameValue , imgValue){
 
   elementsElement.querySelector('.element__img').addEventListener('click', function (evt){
     openPopup(popupElement);
-    popupElement.querySelector('.popup__element_img').src = elementsElement.querySelector('.element__img').src;
-    popupElement.querySelector('.popup__element_text').textContent = elementsElement.querySelector('.element__header').textContent; 
+    popupElement.querySelector('.popup__img_element').src = elementsElement.querySelector('.element__img').src;
+    popupElement.querySelector('.popup__text_element').textContent = elementsElement.querySelector('.element__header').textContent; 
    // elementsElement.querySelector('.element__popup_img').src = imgValue;
    // elementsElement.querySelector('.element__popup_text').textContent = nameValue;
    // elementsElement.querySelector('.element__popup').classList.add("element__popup_opened");
