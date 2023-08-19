@@ -1,3 +1,5 @@
 .popup_opened{
-    display: flex;
+    visibility: inherit;
+    animation: fade-in 1s;
 }
+
