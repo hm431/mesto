@@ -13,8 +13,8 @@ const profileName = document.querySelector('.profile__name');
 const profileStatusProfession = document.querySelector('.profile__status');
 
 
-const popupFormProfil = document.querySelector('.popup__form_profil');
-const popupFormPlace = document.querySelector('.popup__form_place');
+const popupFormProfil = document.querySelector('.popup__profil_form');
+const popupFormPlace = document.querySelector('.popup__place_form');
 
 const elementsContainer = document.querySelector('.elements');
 //let elementsContainer = document.querySelector('.elements__container');

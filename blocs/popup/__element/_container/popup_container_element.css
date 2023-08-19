@@ -1,10 +1,10 @@
-.popup__element_container{
+.element__container{
     position: relative;
     margin: auto;
 }
 
 @media screen and (max-width: 1040px) {
-    .popup__element_container {
+    .element__container {
         width: 240px;
     }
 }
