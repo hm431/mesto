@@ -42,11 +42,14 @@ function handleFormProfilSubmit (evt) {
 
 function handleFormPlaceSubmit (evt) {
   evt.preventDefault(); 
+  renderCard(addElement(nameCardInput.value, ImgCardInput.value));
   closePopup(popupPlace);
+  nameCardInput.value = "";
+  ImgCardInput.value = "";
 }
 
  
-buttonOpenPopupAddCard.addEventListener('click', function () {
+buttonOpenPopupAddCard.addEventListener('submit', function () {
 
 
   renderCard(addElement(nameCardInput.value, ImgCardInput.value));
