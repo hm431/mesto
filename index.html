@@ -46,10 +46,14 @@
             <form action="#" method="get" name="formPopup" class="popup__form popup__form_profil" novalidate>
                 <fieldset class="popup__set">
                 <h2 class="popup__header">Редактировать профиль</h2>
-                <input type="text" name="popupName" placeholder="Имя" id="name-input" class="popup__input popup__input_name_text" required minlength="2">
-                <span class="popup__error  popup__error_name form__input-error name-input-error" ></span>
-                <input type="text" name="popupStatus" placeholder="О себе" class="popup__input popup__input_status_text" id="status-input" required minlength="2">
-                <span class="popup__error  popup__error_status   form__input-error status-input-error" ></span>
+                <input type="text" name="popupName" placeholder="Имя" id="name" class="popup__input popup__input_name_text" required minlength="2">
+               
+                <span class="popup__error  popup__error_name " ></span>
+
+                <input type="text" name="popupStatus" placeholder="О себе" class="popup__input popup__input_status_text" id="status" required minlength="2">
+               
+                <span class="popup__error  popup__error_status" ></span>
+                
                 <button type="submit" class="popup__save">Сохранить</button>
             </fieldset>
             </form> 
@@ -64,14 +68,18 @@
                 <fieldset class="popup__set">
                     <h2 class="popup__header">Новое место</h2>
                     <input type="text" name="popupName" placeholder="Название" class="popup__input popup__input_place_text"
-                        required minlength="2" id="text-input">
-                    <span class="popup__error  popup__error_text form__input-error text-input-error"></span>
+                        required minlength="2" id="text">
+
+
+                    <span class="popup__error  popup__error_text "></span>
     
     
     
                     <input type="url" name="popupStatus" placeholder="Ссылка на картинку"
-                        class="popup__input popup__input_place_link" id="url-input">
-                    <span class="popup__error  popup__error_link form__input-error url-input-error"></span>
+                        class="popup__input popup__input_place_link" id="url">
+                        
+                    <span class="popup__error  popup__error_url form__input-error url-input-error"></span>
+
                     <button type="submit" class="popup__save popup__save_place">Создать</button>
                 </fieldset>
             </form>

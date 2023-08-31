@@ -17,26 +17,9 @@
 }
 
 
-.form__input_type_error {
-    border-bottom-color: red;
-}
-
-.form__input_type_error+.form__checkbox-item {
-    border: 1px solid red;
-}
 
 
-.form__input-error {
 
 
-    color: #F00;
-    font-family: Inter;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
 
-.form__input-error_active {
-    opacity: 1;
-}
+
