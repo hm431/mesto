@@ -23,7 +23,7 @@
                 </div>
                 <h2 class="profile__status">Исследователь океана</h2>
             </div>
-           <button  type="button" class="profile__add-button"></button>
+            <button type="button" class="profile__add-button"></button>
 
         </section>
 
@@ -42,58 +42,61 @@
 
     <div class="popup popup_profil">
         <div class="popup__container popup__container_edit">
-            <button  type="button"  class="popup__close popup__close_profil"></button>
+            <button type="button" class="popup__close popup__close_profil"></button>
             <form action="#" method="get" name="formPopup" class="popup__form popup__form_profil" novalidate>
                 <fieldset class="popup__set">
-                <h2 class="popup__header">Редактировать профиль</h2>
-                <input type="text" name="popupName" placeholder="Имя" id="name" class="popup__input popup__input_name_text" required minlength="2">
-               
-                <span class="popup__error  popup__error_name " ></span>
+                    <h2 class="popup__header">Редактировать профиль</h2>
+                    <input type="text" name="popupName" placeholder="Имя" id="name"
+                        class="popup__input popup__input_name_text" required minlength="2">
 
-                <input type="text" name="popupStatus" placeholder="О себе" class="popup__input popup__input_status_text" id="status" required minlength="2">
-               
-                <span class="popup__error  popup__error_status" ></span>
-                
-                <button type="submit" class="popup__save">Сохранить</button>
-            </fieldset>
-            </form> 
+                    <span class="popup__error  popup__error_name "></span>
+
+                    <input type="text" name="popupStatus" placeholder="О себе"
+                        class="popup__input popup__input_status_text" id="status" required minlength="2">
+
+                    <span class="popup__error  popup__error_status"></span>
+
+                    <button type="submit" class="popup__save">Сохранить</button>
+                </fieldset>
+            </form>
         </div>
-        <div class="popup__backgraund popup__backgraund_profil" ></div>
+        <div class="popup__backgraund popup__backgraund_profil"></div>
     </div>
-    
+
     <div class="popup popup_place">
         <div class="popup__container popup__container_edit">
             <button type="button" class="popup__close popup__close_place"></button>
             <form action="#" method="get" name="formPopup" class="popup__form popup__form_place" novalidate>
                 <fieldset class="popup__set">
                     <h2 class="popup__header">Новое место</h2>
-                    <input type="text" name="popupName" placeholder="Название" class="popup__input popup__input_place_text"
-                        required minlength="2" id="text">
+                    <input type="text" name="popupName" placeholder="Название"
+                        class="popup__input popup__input_place_text" required minlength="2" id="text">
 
 
                     <span class="popup__error  popup__error_text "></span>
-    
-    
-    
+
+
+
                     <input type="url" name="popupStatus" placeholder="Ссылка на картинку"
                         class="popup__input popup__input_place_link" id="url">
-                        
-                    <span class="popup__error  popup__error_url form__input-error url-input-error"></span>
+
+                    <span class="popup__error  popup__error_url"></span>
 
                     <button type="submit" class="popup__save popup__save_place">Создать</button>
                 </fieldset>
             </form>
         </div>
 
-        
-        <div class="popup__backgraund popup__backgraund_place" ></div>
+
+        <div class="popup__backgraund popup__backgraund_place"></div>
     </div>
 
 
     <div class="popup popup_element">
         <div class="popup__container popup__container_element">
-            <button  type="button"  class="popup__close popup__close_element"></button>
-            <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg" alt="Изображение места" class="popup__img popup__img_element">
+            <button type="button" class="popup__close popup__close_element"></button>
+            <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg"
+                alt="Изображение места" class="popup__img popup__img_element">
             <h2 class="popup__text popup__text_element">Пока что то </h2>
         </div>
     </div>
@@ -101,10 +104,10 @@
     <template id="element-template">
         <div class="element">
             <img src="#" alt="Изображение места" class="element__img">
-            <button class="element__delite"></button> 
+            <button class="element__delite"></button>
             <div class="element__text">
                 <h2 class="element__header"></h2>
-                <button  type="button" class="element__like"></button>
+                <button type="button" class="element__like"></button>
             </div>
         </div>
     </template>
