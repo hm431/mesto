@@ -2,6 +2,11 @@ const popupProfil = document.querySelector('.popup_profil');
 const popupPlace = document.querySelector('.popup_place');
 const popupElement = document.querySelector('.popup_element');
 
+
+const backgraundPlace = document.querySelector('.popup__backgraund_place');
+const backgraundProfil = document.querySelector('.popup__backgraund_profil');
+
+
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 const buttonClosePopupProfile = document.querySelector('.popup__close_profil');
@@ -32,7 +37,7 @@ initialCards.forEach(function (element){
   })
 
 
-//Функция, которая 
+ 
 function handleFormProfilSubmit (evt) {
     evt.preventDefault(); 
     profileName.textContent = nameInput.value;
@@ -82,24 +87,9 @@ function addElement(nameValue , imgValue){
     openPopup(popupElement);
     popupElement.querySelector('.popup__img_element').src = elementsElement.querySelector('.element__img').src;
     popupElement.querySelector('.popup__text_element').textContent = elementsElement.querySelector('.element__header').textContent; 
-   // elementsElement.querySelector('.element__popup_img').src = imgValue;
-   // elementsElement.querySelector('.element__popup_text').textContent = nameValue;
-   // elementsElement.querySelector('.element__popup').classList.add("element__popup_opened");
+
   });
-/*
-  elementsElement.querySelector('.element__popup_close').addEventListener('click', function (evt){
-    function AnimationCloseImg(){
-      elementsElement.querySelector('.element__popup').classList.add("animation_close");
-      setTimeout(closeImg, 1000);
-    }
-    function closeImg(){
-      elementsElement.querySelector('.element__popup').classList.remove("animation_close");
-      elementsElement.querySelector('.element__popup').classList.remove("element__popup_opened");
-    }
-    AnimationCloseImg();
-    
-  }); */
-  //elementsContainer.prepend(elementsElement);
+
 
   return(elementsElement);
 
@@ -127,41 +117,12 @@ function closePopup(popup) {
 }
 
 function openPopup(popup) {
+//  enableValidation(popup);
   popup.style.animation = "";
   popup.classList.add("popup_opened");
 }
 
-/*
-function closeFormProfil() { 
-  popupProfil.classList.remove("popup_opened");
-  popupProfil.classList.remove("animation_close");
-}
-function closeAnimationProfil(){
-  popupProfil.classList.add("animation_close");
-  setTimeout(closeFormProfil, 1000);
 
-}
-
-
-function openFormPlace (){   
-    popupPlace.classList.add("popup_opened");
-}
-
-function closeFormPlace() {
-    popupPlace.classList.remove("popup_opened");
-    popupPlace.classList.remove("animation_close"); 
-}
-
-function closeAnimationPlace(){
-  popupPlace.classList.add("animation_close");
-  setTimeout(closeFormPlace, 1000);
-
-}
-
-function closeElement(){
-  popupElement.classList.remove("popup_opened");
-}
-*/
 
 
 
@@ -171,6 +132,24 @@ editButton.addEventListener('click', ouenFormProfil);
 buttonClosePopupProfile.addEventListener('click', () => closePopup(popupProfil));
 addButton.addEventListener('click', () => openPopup(popupPlace));
 buttonClosePopupPlace.addEventListener('click', () => closePopup(popupPlace));
+
+backgraundPlace.addEventListener('click', () => closePopup(popupPlace));
+backgraundProfil.addEventListener('click', () => closePopup(popupProfil));
+
+
+popupPlace.addEventListener('keydown', function (evt){
+  if (evt.key === "Escape"){
+    closePopup(popupPlace);
+  }
+});
+
+popupProfil.addEventListener('keydown', function (evt){
+  if (evt.key === "Escape"){
+    closePopup(popupProfil);
+  }
+});
+
+
 popupFormProfil.addEventListener('submit', handleFormProfilSubmit);
 popupFormPlace.addEventListener('submit', handleFormPlaceSubmit);
 buttonClosePopupElement.addEventListener('click', () => closePopup(popupElement));

@@ -7,7 +7,7 @@
     justify-content: center;
     background: rgba(0, 0, 0, 0.5);
     transition: visibility 1s;
-    
+    z-index: 199;
     
 }
 
