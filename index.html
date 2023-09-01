@@ -44,7 +44,7 @@
         <div class="popup__container popup__container_edit">
             <button type="button" class="popup__close popup__close_profil"></button>
             <form action="#" method="get" name="formPopup" class="popup__form popup__form_profil" novalidate>
-                <fieldset class="popup__set">
+               
                     <h2 class="popup__header">Редактировать профиль</h2>
                     <input type="text" name="popupName" placeholder="Имя" id="name"
                         class="popup__input popup__input_name_text" required minlength="2">
@@ -57,17 +57,17 @@
                     <span class="popup__error  popup__error_status"></span>
 
                     <button type="submit" class="popup__save">Сохранить</button>
-                </fieldset>
+              
             </form>
         </div>
-        <div class="popup__backgraund popup__backgraund_profil"></div>
+        
     </div>
 
     <div class="popup popup_place">
         <div class="popup__container popup__container_edit">
             <button type="button" class="popup__close popup__close_place"></button>
             <form action="#" method="get" name="formPopup" class="popup__form popup__form_place" novalidate>
-                <fieldset class="popup__set">
+                
                     <h2 class="popup__header">Новое место</h2>
                     <input type="text" name="popupName" placeholder="Название"
                         class="popup__input popup__input_place_text" required minlength="2" id="text">
@@ -78,17 +78,17 @@
 
 
                     <input type="url" name="popupStatus" placeholder="Ссылка на картинку"
-                        class="popup__input popup__input_place_link" id="url">
+                        class="popup__input popup__input_place_link" id="url" required>
 
                     <span class="popup__error  popup__error_url"></span>
 
                     <button type="submit" class="popup__save popup__save_place">Создать</button>
-                </fieldset>
+                
             </form>
         </div>
 
 
-        <div class="popup__backgraund popup__backgraund_place"></div>
+        
     </div>
 
 

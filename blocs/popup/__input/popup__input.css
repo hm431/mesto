@@ -1,9 +1,9 @@
 .popup__input {
-    margin: 17px 0 0 0;
+    margin: 0 0 0 0;
     width: 100%;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    padding: 13px 0 9px 0;
+    padding: 0px 0 9px 0;
     font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -12,9 +12,6 @@
     color: #000000;
 }
 
-.popup__input:invalid {
-    border-bottom: 1px solid red;
-}
 
 
 
