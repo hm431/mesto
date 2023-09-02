@@ -26,7 +26,7 @@ const showInputError = (formElement, inputElement, errorMessage, settings) => {
   });
   };
   
-  const checkInputValidity = (formElement, inputElement) => {
+  const checkInputValidity = (formElement, inputElement, settings) => {
     if (!inputElement.validity.valid) {
       showInputError(formElement, inputElement, inputElement.validationMessage,  settings);
     } else {
@@ -55,7 +55,7 @@ const showInputError = (formElement, inputElement, errorMessage, settings) => {
   
     inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', function () {
-        checkInputValidity(formElement, inputElement);
+        checkInputValidity(formElement, inputElement, settings);
         // чтобы проверять его при изменении любого из полей
         toggleButtonState(inputList, buttonElement, settings);
       });
@@ -66,10 +66,10 @@ const showInputError = (formElement, inputElement, errorMessage, settings) => {
   const enableValidation = (settings) => {
     const formList = Array.from(document.querySelectorAll(settings.formSelector));
     formList.forEach((formElement) => {
-      formElement.addEventListener('submit', function (evt) {
+  /*    formElement.addEventListener('submit', function (evt) {
         evt.preventDefault();
       });
-  /*
+  
      const fieldsetList = Array.from(formElement.querySelectorAll('.popup__set'));
   
      fieldsetList.forEach((fieldSet) => {
@@ -80,7 +80,7 @@ const showInputError = (formElement, inputElement, errorMessage, settings) => {
   };
   
 
-  const  settings =  {
+  const  parameters =  {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__save',
@@ -89,5 +89,5 @@ const showInputError = (formElement, inputElement, errorMessage, settings) => {
     errorClass: 'popup__error_active'
   }
 
-  enableValidation(settings); 
+  enableValidation(parameters); 
 

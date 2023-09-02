@@ -18,8 +18,13 @@ const profileName = document.querySelector('.profile__name');
 const profileStatusProfession = document.querySelector('.profile__status');
 
 
+const elementsTemplate = document.querySelector('#element-template').content;
+
+
 const popupFormProfil = document.querySelector('.popup__form_profil');
 const popupFormPlace = document.querySelector('.popup__form_place');
+const savePlase = popupFormPlace.querySelector('.popup__save_place');
+
 
 const elementsContainer = document.querySelector('.elements');
 //let elementsContainer = document.querySelector('.elements__container');
@@ -51,6 +56,8 @@ function handleFormPlaceSubmit (evt) {
   closePopup(popupPlace);
   nameCardInput.value = "";
   imgCardInput.value = "";
+  savePlase.classList.add("popup__save_disabled");
+  savePlase.disabled = true;
 }
 
  /*
@@ -66,9 +73,10 @@ buttonOpenPopupAddCard.addEventListener('submit', function () {
 });
 */
 
+
 //Функция добавления карточки 
 function addElement(nameValue , imgValue){
-  const elementsTemplate = document.querySelector('#element-template').content;
+
   const elementsElement = elementsTemplate.querySelector('.element').cloneNode(true);
   //console.log(elementsElement.querySelector('.element__img').getAttribute('src'));
   elementsElement.querySelector('.element__img').src = imgValue;
@@ -85,9 +93,9 @@ function addElement(nameValue , imgValue){
 
   elementsElement.querySelector('.element__img').addEventListener('click', function (evt){
     openPopup(popupElement);
-    popupElement.querySelector('.popup__img_element').src = elementsElement.querySelector('.element__img').src;
-    popupElement.querySelector('.popup__img_element').alt = elementsElement.querySelector('.element__header').textContent;
-    popupElement.querySelector('.popup__text_element').textContent = elementsElement.querySelector('.element__header').textContent; 
+    popupElement.querySelector('.popup__img_element').src = imgValue;
+    popupElement.querySelector('.popup__img_element').alt = nameValue;
+    popupElement.querySelector('.popup__text_element').textContent = nameValue;
 
   });
 
