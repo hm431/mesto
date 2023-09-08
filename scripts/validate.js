@@ -2,7 +2,7 @@
 // включение валидации вызовом enableValidation
 // все настройки передаются при вызове
 
-
+/*
 
 const showInputError = (formElement, inputElement, errorMessage, settings) => {
     const errorElement = formElement.querySelector(`.popup__error_${inputElement.id}`);
@@ -74,7 +74,7 @@ const showInputError = (formElement, inputElement, errorMessage, settings) => {
   
      fieldsetList.forEach((fieldSet) => {
        setEventListeners(fieldSet, settings);
-     }); */
+     }); 
      setEventListeners(formElement, settings);
     });
   };
@@ -91,3 +91,4 @@ const showInputError = (formElement, inputElement, errorMessage, settings) => {
 
   enableValidation(parameters); 
 
+*/
