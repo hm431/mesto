@@ -1,3 +1,4 @@
+import { openPopup } from "./index.js";
 
 export  class Card {
   constructor(nameValue, imgValue, elementsTemplate) {
@@ -24,7 +25,7 @@ export  class Card {
     });
 
     _elementsElement.querySelector('.element__img').addEventListener('click',  (evt) => {
-      this._openPopup(popupElement);
+      openPopup(popupElement);
       popupElement.querySelector('.popup__img_element').src = this._imgValue;
      // popupElement.querySelector('.popup__img_element').alt = this._nameValue;
       popupElement.querySelector('.popup__text_element').textContent = this._nameValue;
@@ -35,7 +36,7 @@ export  class Card {
     return (_elementsElement);
 
   }
-
+/*
   _openPopup(popup) {
     //  enableValidation(popup);
     //  popup.style.animation = "";
@@ -50,7 +51,7 @@ export  class Card {
       closePopup(openedPopup);
     }
   }
-
+*/
 
 }
 

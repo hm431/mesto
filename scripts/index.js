@@ -121,7 +121,7 @@ function closePopup(popup) {
 
 }
 
-function openPopup(popup) {
+export function openPopup(popup) {
   //  enableValidation(popup);
   //  popup.style.animation = "";
   document.addEventListener('keydown', closeByEsc);
