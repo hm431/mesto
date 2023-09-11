@@ -1,41 +1,58 @@
 import { openPopup } from "./index.js";
 
+const imagePopup = document.querySelector('.popup_element');
+const popupImage = imagePopup.querySelector('.popup__img_element');
+const popupText = imagePopup.querySelector('.popup__text_element');
+
+
 export  class Card {
   constructor(nameValue, imgValue, elementsTemplate) {
     this._imgValue = imgValue;
     this._nameValue = nameValue;
     this._elementsTemplate = elementsTemplate;
+    this._cardElement = this._elementsTemplate.querySelector('.element').cloneNode(true);
+    this._cardImage = this._cardElement.querySelector('.element__img');
+  //  this._popupImage = popupElement.querySelector('.popup__img_element');
   }
 
+
+ 
   //Функция добавления карточки 
   addElement() {
-    const popupElement = document.querySelector('.popup_element');
-    const _elementsElement = this._elementsTemplate.querySelector('.element').cloneNode(true);
+    
+   // const _elementsElement = this._elementsTemplate.querySelector('.element').cloneNode(true);
     //console.log(elementsElement.querySelector('.element__img').getAttribute('src'));
-    _elementsElement.querySelector('.element__img').src = this._imgValue;
-    _elementsElement.querySelector('.element__img').alt = this._nameValue;
-    _elementsElement.querySelector('.element__header').textContent = this._nameValue;
+    this._cardImage.src = this._imgValue;
+    this._cardImage.alt = this._nameValue;
+    this._cardElement.querySelector('.element__header').textContent = this._nameValue;
+    this._setEventListeners();
 
-    _elementsElement.querySelector('.element__like').addEventListener('click', function (evt) {
+
+
+    return (this._cardElement);
+
+  }
+
+  _setEventListeners() {
+    this._cardElement.querySelector('.element__like').addEventListener('click',  (evt) => {
 
       evt.target.classList.toggle('element__like_active');
     });
-    _elementsElement.querySelector('.element__delite').addEventListener('click', function (evt) {
-      _elementsElement.remove('.element__none');
+    this._cardElement.querySelector('.element__delite').addEventListener('click', (evt) => {
+      this._cardElement.remove('.element__none');
     });
 
-    _elementsElement.querySelector('.element__img').addEventListener('click',  (evt) => {
-      openPopup(popupElement);
-      popupElement.querySelector('.popup__img_element').src = this._imgValue;
-     // popupElement.querySelector('.popup__img_element').alt = this._nameValue;
-      popupElement.querySelector('.popup__text_element').textContent = this._nameValue;
+    this._cardImage.addEventListener('click',  (evt) => {
+      openPopup(imagePopup);
+      popupImage.src = this._imgValue;
+      popupImage.alt = this._nameValue;
+      popupText.textContent = this._nameValue;
 
     });
-
-
-    return (_elementsElement);
-
   }
+
+
+  
 /*
   _openPopup(popup) {
     //  enableValidation(popup);

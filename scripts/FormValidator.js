@@ -3,74 +3,74 @@
 // все настройки передаются при вызове
 
 export class FormValidator {
-  constructor(settings) {
+  constructor(settings, formElement) {
     this.settings = settings;
+    this.formElement = formElement;
+    this.inputList = Array.from(this.formElement.querySelectorAll(this.settings.inputSelector));
+    this.buttonElement = formElement.querySelector(this.settings.submitButtonSelector);
   }
 
-  _showInputError(formElement, inputElement, errorMessage, settings) {
-    const errorElement = formElement.querySelector(`.popup__error_${inputElement.id}`);
-    inputElement.classList.add(settings.inputErrorClass);
+  _showInputError(inputElement, errorMessage) {
+    const errorElement = this.formElement.querySelector(`.popup__error_${inputElement.id}`);
+    inputElement.classList.add(this.settings.inputErrorClass);
     errorElement.textContent = errorMessage;
-    errorElement.classList.add(settings.errorClass);
+    errorElement.classList.add(this.settings.errorClass);
   }
 
-  _hideInputError(formElement, inputElement, settings) {
-    const errorElement = formElement.querySelector(`.popup__error_${inputElement.id}`);
-    inputElement.classList.remove(settings.inputErrorClass);
-    errorElement.classList.remove(settings.errorClass);
+  _hideInputError(inputElement) {
+    const errorElement = this.formElement.querySelector(`.popup__error_${inputElement.id}`);
+    inputElement.classList.remove(this.settings.inputErrorClass);
+    errorElement.classList.remove(this.settings.errorClass);
     errorElement.textContent = '';
   }
 
 
 
-  _hasInvalidInput(inputList) {
-    return inputList.some((inputElement) => {
+  _hasInvalidInput() {
+    return this.inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }
 
-  _checkInputValidity(formElement, inputElement, settings) {
+  _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid)   {
-      this._showInputError(formElement, inputElement, inputElement.validationMessage, settings);
+      this._showInputError(inputElement, inputElement.validationMessage);
     } else   {
-      this._hideInputError(formElement, inputElement, settings);
+      this._hideInputError(inputElement);
     }
   }
 
 
-  _toggleButtonState(inputList, buttonElement, settings) {
-    if (this._hasInvalidInput(inputList)) {
-      buttonElement.classList.add(settings.inactiveButtonClass);
-      buttonElement.disabled = true;
+  _toggleButtonState() {
+    if (this._hasInvalidInput()) {
+      this.buttonElement.classList.add(this.settings.inactiveButtonClass);
+      this.buttonElement.disabled = true;
     } else {
-      buttonElement.classList.remove(settings.inactiveButtonClass);
-      buttonElement.disabled = false;
+      this.buttonElement.classList.remove(this.settings.inactiveButtonClass);
+      this.buttonElement.disabled = false;
     }
   }
 
 
-  _setEventListeners(formElement, settings) {
-    const inputList = Array.from(formElement.querySelectorAll(this.settings.inputSelector));
-    const buttonElement = formElement.querySelector(settings.submitButtonSelector);
+  _setEventListeners() {
+  //  const inputList = Array.from(this.formElement.querySelectorAll(this.settings.inputSelector));
+  //  const buttonElement = formElement.querySelector(this.settings.submitButtonSelector);
 
     // чтобы проверить состояние кнопки в самом начале
-    this._toggleButtonState(inputList, buttonElement, settings);
+    this._toggleButtonState();
 
-    inputList.forEach((inputElement) => {
+    this.inputList.forEach((inputElement) => {
       inputElement.addEventListener('input',  () => {
-        this._checkInputValidity(formElement, inputElement, settings);
+        this._checkInputValidity(inputElement);
         // чтобы проверять его при изменении любого из полей
-        this._toggleButtonState(inputList, buttonElement, settings);
+        this._toggleButtonState();
       });
     });
   }
 
 
   enableValidation() {
-    const formList = Array.from(document.querySelectorAll(this.settings.formSelector));
-    formList.forEach((formElement) => {
-      this._setEventListeners(formElement, this.settings);
-    });
+      this._setEventListeners();
   }
 
 }
