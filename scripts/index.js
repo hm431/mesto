@@ -81,12 +81,9 @@ function handleFormPlaceSubmit(evt) {
   evt.preventDefault();
   const card = createCard({name: nameCardInput.value, link: imgCardInput.value});
   renderCard(card); 
-  closePopup(popupPlace);
   evt.target.reset();
- /* nameCardInput.value = "";
-  imgCardInput.value = ""; */
-  popupPlaceValid.enableValidation(); 
-  
+  closePopup(popupPlace);
+  popupPlaceValid.disableButton();  
 }
 
 
