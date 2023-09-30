@@ -17,10 +17,10 @@ import {
   //  buttonClosePopupProfile,
   //  buttonClosePopupPlace,
   //  buttonClosePopupElement,
-  //  nameInput,
-  //  jobInput,
-  //  profileName,
-  //  profileStatusProfession,
+    nameInput,
+    jobInput,
+    profileName,
+    profileStatusProfession,
   elementsTemplate,
   // popupFormProfil,
   // popupFormPlace,
@@ -40,91 +40,89 @@ popupProfilValid.enableValidation();
 popupPlaceValid.enableValidation();
 
 
+function createCard(item) {
+  // тут создаете карточку и возвращаете ее
+  const cardElement = new Card(
+    item.name,
+    item.link,
+    elementsTemplate,
+    {
+      handleCardClick: (evt) => {
+        imagePopup.open(item.link, item.name);
+      }
+    },)
+  return cardElement.addElement();
+}
+
 
 const imagePopup = new PopupWithImage(
-  selectorImagePopup);
+  '.popup_element');
+imagePopup.setEventListeners();
+
+
+
+
 
 
 // Make class Section for first cards
 const baseCards = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = new Card(
-      item.name,
-      item.link,
-      elementsTemplate,
-      {
-        handleCardClick: (evt) => {
-          imagePopup.open(item.link, item.name);
-        }
-      },)
-
-    const cardElement = card.addElement();
+    const cardElement = createCard(item);
     baseCards.addItem(cardElement);
   }
 },
-  elementsContainer,
+'.elements',
 );
 
 
 const popupFormPlace = new PopupWithForm(
-  popupPlace,
+  '.popup_place',
   {
-    formSunbit: (data) => {
-      const forRender = [];
-      forRender.push(data);
-      console.log(forRender);
-      const newCards = new Section({
-        items: forRender,
-        renderer: (item) => {
-          const car = new Card(
-            item.popupName,
-            item.popupStatus,
-            elementsTemplate,
-            {
-              handleCardClick: (evt) => {
-                imagePopup.open(item.popupStatus, item.popupName);
-              }
-            },)
-
-          const cardElement = car.addElement();
-          newCards.addItem(cardElement);
-        }
-      },
-        elementsContainer,
-      );
+    sumbitForm: (data) => {
+      const forRender = {
+        link: data.popupStatus,
+        name: data.popupName     
+      };  
+      popupPlaceValid.disableButton();
+      const cardElement = createCard(forRender);
+      baseCards.addItem(cardElement);
       popupFormPlace.close();
-
-      newCards.renderItems();
-
     }
 
   }
 );
 
 
+popupFormPlace.setEventListeners();
+
+const changeUserInfo = new UserInfo(
+  profileName,
+  profileStatusProfession
+);
 
 const popupFormProfil = new PopupWithForm(
-  popupProfil,
+  '.popup_profil',
   {
-    formSunbit: (data) => {
-      const changeUserInfo = new UserInfo(
+    sumbitForm: (data) => {
+   //   evt.preventDefault(); 
+      changeUserInfo.setUserInfo(
         data.popupName,
         data.popupStatus
       );
-
-      changeUserInfo.setUserInfo();
+      
       popupFormProfil.close();
-
-      console.log(data);
-
     }
 
   }
 );
+popupFormProfil.setEventListeners();
 
-
-editButton.addEventListener('click', () => popupFormProfil.open());
+editButton.addEventListener('click', () => {
+                                            nameInput.value = profileName.textContent;
+                                            jobInput.value = profileStatusProfession.textContent;
+                                            popupFormProfil.open();
+                                           });
 addButton.addEventListener('click', () => popupFormPlace.open());
 
 baseCards.renderItems();

@@ -1,8 +1,8 @@
 //import { openPopup } from "../pages/index.js";
 
-const imagePopup = document.querySelector('.popup_element');
-const popupImage = imagePopup.querySelector('.popup__img_element');
-const popupText = imagePopup.querySelector('.popup__text_element');
+//const imagePopup = document.querySelector('.popup_element');
+//const popupImage = imagePopup.querySelector('.popup__img_element');
+//const popupText = imagePopup.querySelector('.popup__text_element');
 
 
 
@@ -61,20 +61,6 @@ export  class Card {
 
   
 
-  _openPopup(popup) {
-    //  enableValidation(popup);
-    //  popup.style.animation = "";
-    document.addEventListener('keydown', this._closeByEsc);
-    popup.classList.remove("animation_close");
-    popup.classList.add("popup_opened");
-  }  
-
-  _closeByEsc(evt) {
-    if (evt.key === "Escape") {
-      const openedPopup = document.querySelector('.popup_opened');
-      closePopup(openedPopup);
-    }
-  }
 
 
 }

@@ -1,55 +1,57 @@
 import Popup from "./Popup.js";
 
 
-
+// TODO Fix 17 string in reveu in  PopupWithForm
 
 export default class PopupWithForm extends Popup{
-    constructor(selectorPopup, {formSunbit}){
+    constructor(selectorPopup, {sumbitForm}){
         super(selectorPopup);
-        this._popup = selectorPopup;
-        this.formSunbit = formSunbit;
+ //       this._popup = selectorPopup;
+    //    this.formSunbit = formSunbit;
+
         this._sumbitForm = this._popup.querySelector('form');
+
+
+        this.sumbitForm = sumbitForm;
+        this._formSunbit = this._popup.querySelector('form');
+
         this._dataSumbit = {};
 
 
     }
-    _getInputValues(evt){
-        evt.preventDefault(); 
-        const data = new FormData(this._sumbitForm);
+    _getInputValues(){
+        
+        const data = new FormData(this._formSunbit);
         
         for (let [key, value] of data) {
             this._dataSumbit[`${key}`] = (value);
         } 
-        console.log(this._dataSumbit);
         if (this._dataSumbit.popupStatus != ""){
             
-            this.formSunbit(this._dataSumbit);
+            //this.sumbitForm(this._dataSumbit);
+             return(this._dataSumbit);
         }
-       evt.target.reset();
-
+       
+        
     }
 
 
 
-    setEventListeners(){
-       
-        this._closeButton.addEventListener('click', () => this.close());
-        this._sumbitForm.addEventListener('submit',  (evt) => this._getInputValues(evt));
-        document.addEventListener('keydown',  (evt) => this._handleEscClose(evt));
-        this._closeButton.addEventListener('click', () => this.close());
-        const popupList = document.querySelectorAll('.popup');
-        popupList.forEach(popup => {
-            popup.addEventListener('mousedown', (evt) => {
-                if (evt.target.classList.contains('popup')) {
-                    this.close()
-                }
-            })
-        });
+    setEventListeners(data){
+        super.setEventListeners();
+        this._sumbitForm.addEventListener('submit',  ((evt) => {
+                                                                evt.preventDefault();
+                                                                this.sumbitForm(this._getInputValues());
+                                                                evt.target.reset(); 
+                                                            }));
+    //    this._inputList.forEach((input) => {
+            // тут вставляем в `value` инпута данные из объекта по атрибуту `name` этого инпута
+    //        input.value = data[input.name];
+    //    });
     }
 
     close(evt){
-        this.document.removeEventListener('keydown', this._handleEscClose);
-        this._popup.classList.add('animation_close');
-        this._popup.classList.remove("popup_opened");
+       super.close();
+      // evt.target.reset();
     }
 }

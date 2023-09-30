@@ -6,8 +6,9 @@ import {
 } from '../utils/constants.js';
 
 export default class Popup {
-    constructor(selectorPopup) {
-        this._popup = selectorPopup;
+    constructor(popupSelector) {
+        this._popup = document.querySelector(popupSelector);
+        this._handleEscClose = this._handleEscClose.bind(this)
         this._closeButton = this._popup.querySelector('.popup__close');
         this.document = document;
 
@@ -23,9 +24,9 @@ export default class Popup {
     }
 
     open() {
-        this.setEventListeners();
-        nameInput.value = profileName.textContent;
-        jobInput.value = profileStatusProfession.textContent;
+
+        //  this.setEventListeners();
+        document.addEventListener('keydown', this._handleEscClose);
         this._popup.classList.remove("animation_close");
         this._popup.classList.add("popup_opened");
     }
@@ -34,20 +35,17 @@ export default class Popup {
         this.document.removeEventListener('keydown', this._handleEscClose);
         this._popup.classList.add('animation_close');
         this._popup.classList.remove("popup_opened");
+        document.removeEventListener('keydown', this._handleEscClose);
     }
 
 
     setEventListeners() {
-
-        this.document.addEventListener('keydown', (evt) => this._handleEscClose(evt));
         this._closeButton.addEventListener('click', () => this.close());
-        const popupList = document.querySelectorAll('.popup');
-        popupList.forEach(popup => {
-            popup.addEventListener('mousedown', (evt) => {
-                if (evt.target.classList.contains('popup')) {
-                    this.close()
-                }
-            })
-        });
+
+        this._popup.addEventListener('mousedown', (evt) => {
+            if (evt.target.classList.contains('popup')) {
+                this.close()
+            }
+        })
     }
 }

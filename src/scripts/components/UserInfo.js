@@ -3,20 +3,20 @@ export default class UserInfo {
         this._userName = userName;
         this._userStatus = userStatus;
 
-        this._profileName = document.querySelector('.profile__name');
-        this._profileStatusProfession = document.querySelector('.profile__status');
+    //    this._profileName = document.querySelector('.profile__name');
+    //    this._profileStatusProfession = document.querySelector('.profile__status');
     }
 
     getUserInfo() {
         return ({
-            name: this._userName,
-            status: this._userStatus,
+            name: this._userName.textContent,
+            status: this._userStatus.textContent,
         });
     }
 
-    setUserInfo() {
-        this._profileName.textContent = this._userName;
-        this._profileStatusProfession.textContent = this._userStatus;
+    setUserInfo(profilName, profilStatus) {
+        this._userName.textContent = profilName;
+        this._userStatus.textContent = profilStatus;
     }
 
 
