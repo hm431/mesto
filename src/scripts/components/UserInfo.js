@@ -3,8 +3,6 @@ export default class UserInfo {
         this._userName = userName;
         this._userStatus = userStatus;
 
-    //    this._profileName = document.querySelector('.profile__name');
-    //    this._profileStatusProfession = document.querySelector('.profile__status');
     }
 
     getUserInfo() {

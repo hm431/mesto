@@ -1,11 +1,11 @@
-import { Card } from "../components/Card.js";
-import { FormValidator } from "../components/FormValidator.js";
-import Section from "../components/Section.js";
-import UserInfo from "../components/UserInfo.js";
-import Popup from "../components/Popup.js";
-import PopupWithForm from "../components/PopupWithForm.js";
-import PopupWithImage from "../components/PopupWithImage.js";
-import '../../pages/index.css';
+import { Card } from "../scripts/components/Card.js";
+import { FormValidator } from "../scripts/components/FormValidator.js";
+import Section from "../scripts/components/Section.js";
+import UserInfo from "../scripts/components/UserInfo.js";
+//import Popup from "../components/Popup.js";
+import PopupWithForm from "../scripts/components/PopupWithForm.js";
+import PopupWithImage from "../scripts/components/PopupWithImage.js";
+import './index.css';
 import {
   popupProfil,
   popupPlace,
@@ -17,10 +17,10 @@ import {
   //  buttonClosePopupProfile,
   //  buttonClosePopupPlace,
   //  buttonClosePopupElement,
-    nameInput,
-    jobInput,
-    profileName,
-    profileStatusProfession,
+  nameInput,
+  jobInput,
+  profileName,
+  profileStatusProfession,
   elementsTemplate,
   // popupFormProfil,
   // popupFormPlace,
@@ -30,7 +30,7 @@ import {
   //imgCardInput,
   parameters,
   initialCards
-} from '../utils/constants.js';
+} from '../scripts//utils/constants.js';
 
 
 export const popupProfilValid = new FormValidator(parameters, popupProfil);
@@ -72,19 +72,19 @@ const baseCards = new Section({
     baseCards.addItem(cardElement);
   }
 },
-'.elements',
+  '.elements',
 );
 
 
 const popupFormPlace = new PopupWithForm(
   '.popup_place',
   {
-    sumbitForm: (data) => {
+    submitForm: (data) => {
       const forRender = {
         link: data.popupStatus,
-        name: data.popupName     
-      };  
-      popupPlaceValid.disableButton();
+        name: data.popupName
+      };
+
       const cardElement = createCard(forRender);
       baseCards.addItem(cardElement);
       popupFormPlace.close();
@@ -104,13 +104,13 @@ const changeUserInfo = new UserInfo(
 const popupFormProfil = new PopupWithForm(
   '.popup_profil',
   {
-    sumbitForm: (data) => {
-   //   evt.preventDefault(); 
+    submitForm: (data) => {
+      //   evt.preventDefault(); 
       changeUserInfo.setUserInfo(
         data.popupName,
         data.popupStatus
       );
-      
+
       popupFormProfil.close();
     }
 
@@ -119,11 +119,14 @@ const popupFormProfil = new PopupWithForm(
 popupFormProfil.setEventListeners();
 
 editButton.addEventListener('click', () => {
-                                            nameInput.value = profileName.textContent;
-                                            jobInput.value = profileStatusProfession.textContent;
-                                            popupFormProfil.open();
-                                           });
-addButton.addEventListener('click', () => popupFormPlace.open());
+  nameInput.value = changeUserInfo.getUserInfo().name;
+  jobInput.value = changeUserInfo.getUserInfo().status;
+  popupFormProfil.open();
+});
+addButton.addEventListener('click', () => {
+  popupPlaceValid.disableButton();
+  popupFormPlace.open();
+});
 
 baseCards.renderItems();
 

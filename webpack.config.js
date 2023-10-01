@@ -8,7 +8,7 @@
   const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // подключили плагин 
   
   module.exports = {
-    entry: { main: './src/scripts/pages/index.js' }, // задаем точку входа
+    entry: { main: './src/pages/index.js' }, // задаем точку входа
     output: {
       path: path.resolve(__dirname, "dist"), // используем утилиту lkz формированию пути
       filename: "main.js",

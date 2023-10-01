@@ -8,9 +8,8 @@ const popupText = imagePopup.querySelector('.popup__text_element'); */
 export default class PopupWithImage extends Popup {
     constructor(selectorPopup) {
         super(selectorPopup);
-        this.imagePopup = document.querySelector('.popup_element');
-        this.popupImage = this.imagePopup.querySelector('.popup__img_element');
-        this.popupText = this.imagePopup.querySelector('.popup__text_element');
+        this.popupImage = this._popup.querySelector('.popup__img_element');
+        this.popupText = this._popup.querySelector('.popup__text_element');
     }
 
     open(imgValue, nameValue) {
@@ -18,7 +17,7 @@ export default class PopupWithImage extends Popup {
         this.popupImage.src = imgValue;
         this.popupImage.alt = nameValue;
         this.popupText.textContent = nameValue;
-        
+
     }
 
 
