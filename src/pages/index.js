@@ -161,14 +161,14 @@ imagePopup.setEventListeners();
 
 
 const popupFormDelite = new PopupWithFormDelite(
-  '.popup__delite',
+  '.popup_delite',
   {
     deliteFromApi: (cardIp) => {
-      rendererLoading(true, '.popup__delite');
+      rendererLoading(true, '.popup_delite');
     api.deliteCards(cardIp)
     .catch((error) => console.log(`Ошибка при добавлении карточки: ${error}`))
     .finally(() =>{
-      rendererLoading(false, '.popup__delite');
+      rendererLoading(false, '.popup_delite');
     });
 
   } 
