@@ -1,8 +1,8 @@
 export default class UserInfo {
-    constructor(userName, userStatus) {
+    constructor(userName, userStatus, userAvatar) {
         this._userName = userName;
         this._userStatus = userStatus;
-
+        this._userAvatar = userAvatar;
     }
 
     getUserInfo() {
@@ -17,7 +17,9 @@ export default class UserInfo {
         this._userStatus.textContent = profilStatus;
     }
 
-
+    changeUserAvatar(avatarUrl){
+        this._userAvatar.style.backgroundImage =  `url(${avatarUrl})`;
+    }
 
 
 }

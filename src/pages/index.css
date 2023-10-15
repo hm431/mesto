@@ -7,6 +7,8 @@
 @import url(../blocs/element/__text/element__text.css);
 @import url(../blocs/element/__header/element__header.css);
 @import url(../blocs/element/__like/element__like.css);
+@import url(../blocs/element/__like/_button/element__like_button.css);
+@import url(../blocs/element/__like/_number/element__like_number.css);
 @import url(../blocs/elements/elements.css);
 @import url(../blocs/footer/footer.css);
 @import url(../blocs/footer/__copiright/footer__copiright.css);

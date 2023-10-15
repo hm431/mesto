@@ -2,7 +2,7 @@
 
 export const popupProfil = document.querySelector('.popup_profil');
 export const popupPlace = document.querySelector('.popup_place');
-
+export const popupAvatar = document.querySelector('.popup_avatar');
 
 
 
@@ -10,6 +10,7 @@ export const selectorImagePopup = document.querySelector('.popup_element');
 export const backgraundPlace = document.querySelector('.popup__backgraund_place');
 export const backgraundProfil = document.querySelector('.popup__backgraund_profil');
 export const editButton = document.querySelector('.profile__edit-button');
+export const avatarChange = document.querySelector('.profile__avatar');
 export const addButton = document.querySelector('.profile__add-button');
 export const buttonClosePopupProfile = document.querySelector('.popup__close_profil');
 export const buttonClosePopupPlace = document.querySelector('.popup__close_place');
@@ -17,6 +18,7 @@ export const buttonClosePopupElement = document.querySelector('.popup__close_ele
 export const nameInput = document.querySelector('.popup__input_name_text');
 export const jobInput = document.querySelector('.popup__input_status_text');
 export const profileName = document.querySelector('.profile__name');
+export const profileAvatar = document.querySelector('.profile__avatar');
 export const profileStatusProfession = document.querySelector('.profile__status');
 export const elementsTemplate = document.querySelector('#element-template').content;
 
