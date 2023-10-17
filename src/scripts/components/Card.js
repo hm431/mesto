@@ -7,7 +7,7 @@
 
 
 export  class Card {
-  constructor(nameValue, imgValue, elementsTemplate, cardLikes, isMyCard, {handleCardClick, handleCardDelite, handleCardLike}) {
+  constructor(nameValue, imgValue, elementsTemplate, cardLikes, idCard, idUser, {handleCardClick, handleCardDelite, handleCardLike}) {
     this._imgValue = imgValue;
     this._nameValue = nameValue;
     this._cardLikes = cardLikes;
@@ -19,7 +19,7 @@ export  class Card {
     this._handleCardClick = handleCardClick;
     this._handleCardDelite = handleCardDelite;
     this._handleCardLike = handleCardLike;
-    this._isMyCard = isMyCard;
+    this._isMyCard = (idCard === idUser);
   //  this._popupImage = popupElement.querySelector('.popup__img_element');
   }
 

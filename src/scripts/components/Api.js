@@ -1,18 +1,20 @@
-const onError = (response) => {
-  if (response.ok) {
 
-    return response.json();
-  } else {
-    return Promise.reject(`Ошибка ${response.status} ${response.statusText}`);
-  }
-}
 
 
 export default class Api {
   constructor({ url, headers, myID}) {
     this._url = url; //https://mesto.nomoreparties.co/v1/cohort-77
     this._headers = headers; //'f8a7d69d-f431-4bab-b92e-a7dc9553106e'
-    this._myID = myID;
+  }
+
+
+  onError = (response) => {
+    if (response.ok) {
+  
+      return response.json();
+    } else {
+      return Promise.reject(`Ошибка ${response.status} ${response.statusText}`);
+    }
   }
 
   getCards() {
@@ -20,7 +22,7 @@ export default class Api {
       headers: this._headers,
       method: 'GET',
     })
-      .then((response) => onError(response))
+      .then((response) => this.onError(response))
   }
 
 
@@ -29,7 +31,7 @@ export default class Api {
       headers: this._headers,
       method: 'GET',
     })
-      .then((response) => onError(response))
+      .then((response) => this.onError(response))
   }
 
 
@@ -39,14 +41,14 @@ export default class Api {
       headers: this._headers,
       method: 'PUT'
     })
-      .then((response) => onError(response))
+      .then((response) => this.onError(response))
   }
   else{
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       headers: this._headers,
       method: 'DELETE',
     })
-      .then((response) => onError(response))
+      .then((response) => this.onError(response))
   }
   }
   
@@ -60,7 +62,7 @@ export default class Api {
         link: cardInfo.link
       })
     })
-      .then((response) => onError(response))
+      .then((response) => this.onError(response))
   }
 
 
@@ -72,7 +74,7 @@ export default class Api {
         avatar: avatarLink
       })
     })
-      .then((response) => onError(response))
+      .then((response) => this.onError(response))
   }
 
 
@@ -85,7 +87,7 @@ export default class Api {
         about: profilData.popupStatus
       })
     })
-      .then((response) => onError(response))
+      .then((response) => this.onError(response))
 
   }
 
@@ -95,7 +97,7 @@ export default class Api {
       headers: this._headers,
       method: 'DELETE'
     })
-      .then((response) => onError(response))
+      .then((response) => this.onError(response))
   }
   
 

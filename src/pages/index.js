@@ -70,7 +70,7 @@ avatarChange.addEventListener('click', ()=> {
 
 
 
-const ipOfUser = "652bcb85c314911103f0f0c3";
+
 
 
 
@@ -80,10 +80,36 @@ const apiConfig = {
     authorization:'f8a7d69d-f431-4bab-b92e-a7dc9553106e',
     "Content-type": 'application/json'
   },
-  myID: '4cf7de22ee0db0377c56b935'
 }
 
 const api = new Api(apiConfig);
+
+
+Promise.all([    
+  
+//в Promise.all передаем массив промисов которые нужно выполнить 
+  api.getUserInfo(),
+
+  api.getCards() 
+]) 
+.then(([info, initialCards])=>{
+
+  // Обрабатываем данные пользователя
+
+  console.log('real end here', info);
+  apiConfig.myID = info._id;
+  changeUserInfo.setUserInfo(info.name, info.about);
+  changeUserInfo.changeUserAvatar(info.avatar);
+  
+
+  //Обрабатываем данные каточек 
+  console.log('real end here', initialCards);
+  baseCards.renderItems(initialCards.reverse()); 
+  
+}) 
+.catch((err)=>{             //попадаем сюда если один из промисов завершится ошибкой 
+console.log(err);
+ })
 
 
 const baseCards = new Section({
@@ -94,24 +120,6 @@ const baseCards = new Section({
 },
   '.elements',
 );
-
-api.getCards()
-  .then((item) => {
-    console.log('real end here', item);
-    baseCards.renderItems(item.reverse()); 
-    
-    
-  })
- // .catch((error)=>console.log(error));
-
-
-api.getUserInfo()
-  .then((item) => {
-    console.log('real end here', item);
-    changeUserInfo.setUserInfo(item.name, item.about);
-    changeUserInfo.changeUserAvatar(item.avatar);
-  })
-  .catch((error)=>console.log(error));
 
 
 
@@ -133,7 +141,8 @@ function createCard(item) {
     item.link,
     elementsTemplate,
     item.likes.length,
-    item.owner._id === apiConfig.myID,
+    item.owner._id,
+    apiConfig.myID,
     {
       handleCardClick: (evt) => {
         imagePopup.open(item.link, item.name);
@@ -143,9 +152,7 @@ function createCard(item) {
       },
       handleCardLike: (isLike) =>{
         api.changeLike(isLike, item._id)
-        .then((
-          console.log('работаем)))) ')
-        ))
+
         .catch((error) => console.log(`Ошибка при добавлении карточки: ${error}`));
       }
     },
@@ -159,19 +166,32 @@ const imagePopup = new PopupWithImage(
 imagePopup.setEventListeners();
 
 
+function rendererLoading(isLoading, selectorPopup, textButtonSave){
+  if(isLoading){
+    document.querySelector(selectorPopup).querySelector('.popup__save').textContent = 'Сохранение...';
+  }
+  else{
+    document.querySelector(selectorPopup).querySelector('.popup__save').textContent = textButtonSave;
+  }
+}
 
-const popupFormDelite = new PopupWithFormDelite(
-  '.popup_delite',
-  {
-    deliteFromApi: (cardIp) => {
-      rendererLoading(true, '.popup_delite');
-    api.deliteCards(cardIp)
-    .catch((error) => console.log(`Ошибка при добавлении карточки: ${error}`))
-    .finally(() =>{
-      rendererLoading(false, '.popup_delite');
-    });
-
-  } 
+const popupFormDelite = new PopupWithFormDelite( 
+  '.popup_delite', 
+  { 
+    deliteFromApi: (cardIp) => { 
+      const textButtonSave = document.querySelector('.popup_delite').querySelector('.popup__save ').textContent;
+      rendererLoading(true, '.popup_delite', textButtonSave); 
+    api.deliteCards(cardIp) 
+    .then(() => {
+        popupFormDelite._cardElement.remove('.element__none'); 
+         popupFormDelite.close(); 
+    })
+    .catch((error) => console.log(`Ошибка при добавлении карточки: ${error}`)) 
+    .finally(() =>{ 
+      rendererLoading(false, '.popup_delite', textButtonSave); 
+    }); 
+ 
+  }  
 }
   );
 popupFormDelite.setEventListeners();
@@ -198,7 +218,8 @@ const popupFormPlace = new PopupWithForm(
   '.popup_place',
   {
     submitForm: (data) => {
-      rendererLoading(true, '.popup_place');
+      const textButtonSave = document.querySelector('.popup_place').querySelector('.popup__save ').textContent;
+      rendererLoading(true, '.popup_place', textButtonSave);
       const forRender = {
         link: data.popupStatus,
         name: data.popupName,
@@ -212,21 +233,14 @@ const popupFormPlace = new PopupWithForm(
       })
       .catch((error) => console.log(`Ошибка при добавлении карточки: ${error}`))
       .finally(() =>{
-        rendererLoading(false, '.popup_place');
+        rendererLoading(false, '.popup_place', textButtonSave);
       });
   }
 
     });
 
 
-function rendererLoading(isLoading, selectorPopup){
-  if(isLoading){
-    document.querySelector(selectorPopup).querySelector('.popup__save ').textContent = 'Сохранение...';
-  }
-  else{
-    document.querySelector(selectorPopup).querySelector('.popup__save ').textContent = 'Создать';
-  }
-}
+
 
 
 
@@ -244,16 +258,16 @@ const popupFormAvatar = new PopupWithForm(
   '.popup_avatar',
   {
     submitForm: (data) => {
-      rendererLoading(true, '.popup_avatar');
+      const textButtonSave = document.querySelector('.popup_avatar').querySelector('.popup__save ').textContent;
+      rendererLoading(true, '.popup_avatar', textButtonSave);
       api.editAvatar(data.popupStatus)
       .then((data) =>{
-        console.log(data);
         changeUserInfo.changeUserAvatar(data.avatar);
         popupFormAvatar.close();
       })
       .catch((error) => console.log(`Ошибка при изменении аватара: ${error}`))
       .finally(() =>{
-        rendererLoading(false, '.popup_avatar');
+        rendererLoading(false, '.popup_avatar', textButtonSave);
       });
     }
     }
@@ -266,17 +280,16 @@ const popupFormProfil = new PopupWithForm(
   '.popup_profil',
   {
     submitForm: (data) => {
+      const textButtonSave = document.querySelector('.popup_profil').querySelector('.popup__save ').textContent;
       rendererLoading(true, '.popup_profil');
       api.editProfil(data)
       .then((data) =>{
-        console.log(data);
         changeUserInfo.setUserInfo(data.name, data.about);
         popupFormProfil.close();
-        console.log('sssj');
       })
       .catch((error) => console.log(`Ошибка при изменении профиля: ${error}`))
       .finally(() =>{
-        rendererLoading(false, '.popup_profil');
+        rendererLoading(false, '.popup_profil', textButtonSave);
       });;
     }
 
@@ -299,7 +312,7 @@ addButton.addEventListener('click', () => {
   popupFormPlace.open();
 });
 
-baseCards.renderItems();
+//baseCards.renderItems();
 
 
 

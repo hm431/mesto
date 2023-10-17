@@ -9,11 +9,11 @@ export default class Section {
     this._container.prepend(element);
   }
 
- 
+ /*
   deliteItem(element){
     this._container.remove(element);
   }
-
+ */
 
   renderItems(items) {
     items.forEach(item => {
