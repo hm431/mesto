@@ -7,10 +7,11 @@
     z-index: 0;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover;  
 }
 
 
-.profile__avatar:hover {
+.profile__avatar:hover{
     opacity: 0.6;
 }
+
