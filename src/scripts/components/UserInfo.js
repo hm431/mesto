@@ -10,15 +10,15 @@ export default class UserInfo {
             name: this._userName.textContent,
             status: this._userStatus.textContent,
         });
-    }
+    } 
 
     setUserInfo(profilName, profilStatus) {
         this._userName.textContent = profilName;
         this._userStatus.textContent = profilStatus;
     }
 
-    changeUserAvatar(avatarUrl){
-        this._userAvatar.style.backgroundImage =  `url(${avatarUrl})`;
+    changeUserAvatar(avatarUrl){ 
+        this._userAvatar.style.backgroundImage =  `url('${avatarUrl}')`;
     }
 
 

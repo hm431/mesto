@@ -43,22 +43,6 @@ import {
 
 
 
-//TODO Сделать анимацию подругзки в попапе 
-
-//TODO Сделать Подгрузку Лайков
-
-
-//TODO Сделать удаление карточки с сервера
-
-//TODO Починить попап аватара 
-
-
-
-
-
-
-
-
 
 avatarChange.addEventListener('click', ()=> {
   popupAvatarValid.disableButton();
@@ -140,7 +124,7 @@ function createCard(item) {
     item.name,
     item.link,
     elementsTemplate,
-    item.likes.length,
+    item.likes,
     item.owner._id,
     apiConfig.myID,
     {
@@ -152,8 +136,18 @@ function createCard(item) {
       },
       handleCardLike: (isLike) =>{
         api.changeLike(isLike, item._id)
+          .then((evt) =>{
+            if (cardElement._cardLikeButton.classList.contains('element__like_button_active')) {
+              cardElement._cardElementLike.textContent  = Number(cardElement._cardElementLike.textContent) - 1; 
+              cardElement._cardLikeButton.classList.remove('element__like_button_active');     
+              }
+              else{
+                cardElement._cardElementLike.textContent  = Number(cardElement._cardElementLike.textContent) + 1;
+                cardElement._cardLikeButton.classList.add('element__like_button_active');
+              }
+          })
 
-        .catch((error) => console.log(`Ошибка при добавлении карточки: ${error}`));
+        .catch((error) => console.log(`Ошибка при лайке: ${error}`));
       }
     },
     )
@@ -166,9 +160,9 @@ const imagePopup = new PopupWithImage(
 imagePopup.setEventListeners();
 
 
-function rendererLoading(isLoading, selectorPopup, textButtonSave){
+function rendererLoading(isLoading, selectorPopup, textButtonSave, textButtonLoading){
   if(isLoading){
-    document.querySelector(selectorPopup).querySelector('.popup__save').textContent = 'Сохранение...';
+    document.querySelector(selectorPopup).querySelector('.popup__save').textContent = textButtonLoading;
   }
   else{
     document.querySelector(selectorPopup).querySelector('.popup__save').textContent = textButtonSave;
@@ -180,7 +174,7 @@ const popupFormDelite = new PopupWithFormDelite(
   { 
     deliteFromApi: (cardIp) => { 
       const textButtonSave = document.querySelector('.popup_delite').querySelector('.popup__save ').textContent;
-      rendererLoading(true, '.popup_delite', textButtonSave); 
+      rendererLoading(true, '.popup_delite', textButtonSave, 'Удаление...'); 
     api.deliteCards(cardIp) 
     .then(() => {
         popupFormDelite._cardElement.remove('.element__none'); 
@@ -219,7 +213,7 @@ const popupFormPlace = new PopupWithForm(
   {
     submitForm: (data) => {
       const textButtonSave = document.querySelector('.popup_place').querySelector('.popup__save ').textContent;
-      rendererLoading(true, '.popup_place', textButtonSave);
+      rendererLoading(true, '.popup_place', textButtonSave, 'Сохранение...');
       const forRender = {
         link: data.popupStatus,
         name: data.popupName,
@@ -259,7 +253,7 @@ const popupFormAvatar = new PopupWithForm(
   {
     submitForm: (data) => {
       const textButtonSave = document.querySelector('.popup_avatar').querySelector('.popup__save ').textContent;
-      rendererLoading(true, '.popup_avatar', textButtonSave);
+      rendererLoading(true, '.popup_avatar', textButtonSave, 'Сохранение...');
       api.editAvatar(data.popupStatus)
       .then((data) =>{
         changeUserInfo.changeUserAvatar(data.avatar);
@@ -281,7 +275,7 @@ const popupFormProfil = new PopupWithForm(
   {
     submitForm: (data) => {
       const textButtonSave = document.querySelector('.popup_profil').querySelector('.popup__save ').textContent;
-      rendererLoading(true, '.popup_profil');
+      rendererLoading(true, '.popup_profil',textButtonSave, 'Сохранение...');
       api.editProfil(data)
       .then((data) =>{
         changeUserInfo.setUserInfo(data.name, data.about);
@@ -312,7 +306,7 @@ addButton.addEventListener('click', () => {
   popupFormPlace.open();
 });
 
-//baseCards.renderItems();
+
 
 
 

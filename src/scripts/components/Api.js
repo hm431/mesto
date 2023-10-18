@@ -39,14 +39,14 @@ export default class Api {
     if (isLike){
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       headers: this._headers,
-      method: 'PUT'
+      method: 'DELETE'
     })
       .then((response) => this.onError(response))
   }
   else{
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       headers: this._headers,
-      method: 'DELETE',
+      method: 'PUT',
     })
       .then((response) => this.onError(response))
   }
