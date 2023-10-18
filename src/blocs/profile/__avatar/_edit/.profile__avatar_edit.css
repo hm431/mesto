@@ -1,11 +1,11 @@
-.profile_avatar_edit{
+.profile__avatar_edit{
     height: 100%;
     width: 100%;
     padding: 0;
     border: 0;
 }
 
-.profile_avatar_edit:hover{
+.profile__avatar_edit:hover{
     background-image: url(../../../../images/edit_avatar.svg);
     opacity: 0.6;
     background-position: center;
