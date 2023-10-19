@@ -18,6 +18,10 @@ export default class PopupWithFormDelite extends Popup{
      //   this._cardElement.remove('.element__none'); 
      
     } 
+
+    deliteCardForm(){
+        this._cardElement.remove('.element__none');
+    }
  
     setEventListeners() { 
         super.setEventListeners(); 

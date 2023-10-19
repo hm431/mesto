@@ -26,7 +26,7 @@ export  class Card {
   //  this._popupImage = popupElement.querySelector('.popup__img_element');
   }
 
-
+ 
  
   //Функция добавления карточки 
   addElement() {
@@ -49,15 +49,31 @@ export  class Card {
 
   }
 
+  isLiked() {
+    
+    return this._cardLikes.some((like) => like._id === this._idUser)
+}
+
+
+  _updateLikesView() {
+    this._cardElementLike.textContent = this._cardLikes.length;
+    this._cardLikeButton.classList.toggle('element__like_button_active', this.isLiked());
+  } 
+
+  updateLikes(likes) {
+    this._cardLikes = likes;
+    this._updateLikesView()
+  }
+
   _setEventListeners() {
-    this._cardLikeButton .addEventListener('click',  (evt) => {
-      this.handleCardLike(this._cardLikeButton.classList.contains('element__like_button_active'));
-      //evt.target.classList.toggle('element__like_button_active');
-     
+    this._cardLikeButton.addEventListener('click',  (evt) => {
+      this.handleCardLike(this.isLiked());
     });
     if (this._isMyCard){
     this._cardElement.querySelector('.element__delite').addEventListener('click', (evt) => {
         this._handleCardDelite(this._cardElement);
+     //  this._handleCardDelite(this);
+
     });
   }
     //will dell later

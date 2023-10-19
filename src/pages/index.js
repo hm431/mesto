@@ -67,7 +67,7 @@ const apiConfig = {
 }
 
 const api = new Api(apiConfig);
-
+var userID = 0;
 
 Promise.all([    
   
@@ -81,7 +81,8 @@ Promise.all([
   // Обрабатываем данные пользователя
 
   console.log('real end here', info);
-  apiConfig.myID = info._id;
+  //apiConfig.myID = info._id;
+  userID = info._id;
   changeUserInfo.setUserInfo(info.name, info.about);
   changeUserInfo.changeUserAvatar(info.avatar);
   
@@ -126,7 +127,7 @@ function createCard(item) {
     elementsTemplate,
     item.likes,
     item.owner._id,
-    apiConfig.myID,
+    userID,
     {
       handleCardClick: (evt) => {
         imagePopup.open(item.link, item.name);
@@ -136,15 +137,8 @@ function createCard(item) {
       },
       handleCardLike: (isLike) =>{
         api.changeLike(isLike, item._id)
-          .then((evt) =>{
-            if (cardElement._cardLikeButton.classList.contains('element__like_button_active')) {
-              cardElement._cardElementLike.textContent  = Number(cardElement._cardElementLike.textContent) - 1; 
-              cardElement._cardLikeButton.classList.remove('element__like_button_active');     
-              }
-              else{
-                cardElement._cardElementLike.textContent  = Number(cardElement._cardElementLike.textContent) + 1;
-                cardElement._cardLikeButton.classList.add('element__like_button_active');
-              }
+          .then((info) =>{
+              cardElement.updateLikes(info.likes);
           })
 
         .catch((error) => console.log(`Ошибка при лайке: ${error}`));
@@ -177,7 +171,7 @@ const popupFormDelite = new PopupWithFormDelite(
       rendererLoading(true, '.popup_delite', textButtonSave, 'Удаление...'); 
     api.deliteCards(cardIp) 
     .then(() => {
-        popupFormDelite._cardElement.remove('.element__none'); 
+         popupFormDelite.deliteCardForm() 
          popupFormDelite.close(); 
     })
     .catch((error) => console.log(`Ошибка при добавлении карточки: ${error}`)) 
