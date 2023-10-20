@@ -7,21 +7,18 @@ export default class PopupWithFormDelite extends Popup{
         this._deliteFromApi = deliteFromApi;  
     } 
  
-    open(element, elementId){ 
-        super.open(); 
-        this._cardElement = element; 
-        this._cardElementId = elementId; 
-    } 
- 
-    submitForm(){ 
-        this._deliteFromApi(this._cardElementId); 
-     //   this._cardElement.remove('.element__none'); 
-     
-    } 
 
-    deliteCardForm(){
-        this._cardElement.remove('.element__none');
-    }
+
+    open(card, elementId){  
+        super.open();  
+        this._card = card;  
+        this._cardElementId = elementId;  
+    }  
+
+    submitForm(){  
+        this._deliteFromApi(this._cardElementId, this._card);  
+}
+
  
     setEventListeners() { 
         super.setEventListeners(); 

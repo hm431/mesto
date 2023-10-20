@@ -26,7 +26,10 @@ export  class Card {
   //  this._popupImage = popupElement.querySelector('.popup__img_element');
   }
 
- 
+  deleteCard() {
+    this._cardElement.remove();
+    this._cardElement = null;
+    }
  
   //Функция добавления карточки 
   addElement() {
@@ -71,7 +74,7 @@ export  class Card {
     });
     if (this._isMyCard){
     this._cardElement.querySelector('.element__delite').addEventListener('click', (evt) => {
-        this._handleCardDelite(this._cardElement);
+        this._handleCardDelite(this);
      //  this._handleCardDelite(this);
 
     });

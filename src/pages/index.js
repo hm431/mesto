@@ -67,7 +67,7 @@ const apiConfig = {
 }
 
 const api = new Api(apiConfig);
-var userID = 0;
+let userID = 0;
 
 Promise.all([    
   
@@ -133,7 +133,7 @@ function createCard(item) {
         imagePopup.open(item.link, item.name);
       },
       handleCardDelite: (element) =>{
-        popupFormDelite.open(element, item._id);
+        popupFormDelite.open(cardElement, item._id);
       },
       handleCardLike: (isLike) =>{
         api.changeLike(isLike, item._id)
@@ -163,22 +163,27 @@ function rendererLoading(isLoading, selectorPopup, textButtonSave, textButtonLoa
   }
 }
 
+
+
+
+
 const popupFormDelite = new PopupWithFormDelite( 
   '.popup_delite', 
   { 
-    deliteFromApi: (cardIp) => { 
+    deliteFromApi: (cardIp, cardObject) => { 
       const textButtonSave = document.querySelector('.popup_delite').querySelector('.popup__save ').textContent;
       rendererLoading(true, '.popup_delite', textButtonSave, 'Удаление...'); 
     api.deliteCards(cardIp) 
-    .then(() => {
-         popupFormDelite.deliteCardForm() 
-         popupFormDelite.close(); 
+    .then(() => { 
+        cardObject.deleteCard()
+        popupFormDelite.close(); 
     })
-    .catch((error) => console.log(`Ошибка при добавлении карточки: ${error}`)) 
+    .catch((error) => console.log(`Ошибка при удалении карточки: ${error}`)) 
     .finally(() =>{ 
+      
       rendererLoading(false, '.popup_delite', textButtonSave); 
     }); 
- 
+    
   }  
 }
   );
