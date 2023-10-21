@@ -6,14 +6,17 @@
 .element__delite{background-color:#ffffff00;background-image:url(823b0cf1b0b7e9cb7cad.svg);border:0;height:19px;position:absolute;right:20px;top:20px;width:18px}.element__delite:hover{opacity:.6}
 .element__text{display:flex;justify-content:space-between;margin:20px 20px 0 21px}
 .element__header{color:#000;font-family:Inter,Arial,sans-serif;font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:0;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.element__like{background-color:#fff;background-image:url(87ed371465c7a6a1cd01.svg);border:0;cursor:pointer;height:19px;margin:5px 0 0;width:22px}.element__like:hover{opacity:.5}.element__like_active{background-image:url(ff32266a25f891db49c4.svg);opacity:1}
+
+.element__like_button{background-color:#fff;background-image:url(87ed371465c7a6a1cd01.svg);border:0;cursor:pointer;height:19px;margin:5px 0 0;width:22px}.element__like_button:hover{opacity:.5}.element__like_button_active{background-image:url(ff32266a25f891db49c4.svg);opacity:1}
+.element__like_number{color:#000;font-family:Inter;font-size:13px;font-style:normal;font-weight:400;line-height:normal;margin:0;text-align:center}
 .elements{-moz-column-gap:17px;column-gap:17px;display:grid;grid-template-columns:repeat(auto-fit,minmax(282px,1fr));margin:51px 0 0;row-gap:20px}@media screen and (max-width:1040px){.elements{margin:36px 0 0}}
 .footer{margin:67px 200px 41px;max-width:880px;width:calc(100vw - 400px)}@media screen and (max-width:1040px){.footer{margin:48px 19px 36px;width:calc(100vw - 38px)}}
 .footer__copiright{color:#545454;font-family:Inter,Arial,sans-serif;font-size:18px;font-style:normal;font-weight:400;line-height:22px;margin:0}@media screen and (max-width:1040px){.footer__copiright{font-size:14px;line-height:17px}}
 .header{border-bottom:1px solid rgba(84,84,84,.7);margin:45px 200px 0;max-width:880px;padding:0 0 36px;width:calc(100vw - 400px)}@media screen and (max-width:1040px){.header{margin:28px 0 0;padding:0 0 0 27px;width:293px}.header__logo{padding-bottom:26px;width:103.74px}}
 .main{margin:0 200px;max-width:880px;width:calc(100vw - 400px)}@media screen and (max-width:1040px){.main{width:auto}}
 .profile__add-button{background-color:#ffffff00;background-image:url(e82ea1368040370b4f65.png);background-size:100% 100%;border:0;cursor:pointer;height:50px;margin:35px 0 0 auto;padding:0;width:150px}.profile__add-button:hover{opacity:.6}@media screen and (max-width:1040px){.profile__add-button{background-image:url(6f86ece55e54220c5485.svg);margin:31px 0 0;width:100%}}
-.profile__avatar{border-radius:100px;height:120px;width:120px}
+.profile__avatar{background-position:50%;background-repeat:no-repeat;background-size:cover;border:0;border-radius:100px;height:120px;padding:0;width:120px;z-index:0}.profile__avatar:hover{opacity:.6}
+.profile__hover{border:0;height:100%;padding:0;width:100%}.profile__hover:hover{background-image:url(a086f758840ae814ecde.svg);background-position:50%;background-repeat:no-repeat;opacity:.6}
 .profile__edit-button{background-color:#ffffff00;background-image:url(a1892ea72cb87c8fc3aa.svg);border:0;cursor:pointer;height:24px;margin:15px 0 0 18px;width:24px}.profile__edit-button:hover{opacity:.6}@media screen and (max-width:760px){.profile__edit-button{background-size:100%;height:18px;margin:8px 0 0 10px;width:18px}}
 .profile__info{display:flex;flex-direction:column;margin:0 0 0 30px}
 .profile__name{font-family:Inter,Arial,sans-serif;font-size:42px;font-style:normal;font-weight:500;line-height:48px;margin:0;max-width:294px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}@media screen and (max-width:760px){.profile__name{font-size:27px;line-height:33px;max-width:200px;text-align:center}}
